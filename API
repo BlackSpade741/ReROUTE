@@ -1,0 +1,102 @@
+Features
+
+# GUIObject
+Fields
+- double pos: position of the object, from -30200 to 30200 DONE
+Methods
++ accessors & mutators
++ double getX(): return the horizontal coordinate in the GUI
++ double getY(): return the vertical coordinate in the GUI
++ double distanceTo(GUIObject other): return the distance from this object to other DONE
++ GUI stuff
+
+
+# Train (extends GUIObject) DONE
+Fields
+- static final double ACCELERATION: the acceleration of trains DONE
++ double pos: position of the object, from -30200 to 30200
+- int id: id of this train
+- int capacity: maximum capacity of this train (with potential to exceed capacity with detriment to speed) DONE
+- int numPassengers: number of passengers onboard DONE
+- double speed: speed of this train right now DONE
+- Station nextStation: the next station the train is heading towards
+Methods
++ accessors & mutators
++ double distanceToStation(): returns the distance to the next station DONE
++ double distanceToTerminus(): returns the distance to the terminal station DONE
++ int timeToStation(): returns the time, in seconds, to the next station DONE
+
+
+# Station (extends GUIObject)
+Fields
++ double pos: position of the object, from -30200 to 30200
+- int[] inflowRange: the minimum and maximum inflow
+- int[] outflowRange: the minimum and maximum outflow
+- String name: name of this station
+- String id: id of this station
+- Station nextStation: next station on the route, towards the positive direction
+- Station previousStation: previous station on the route, backwards on the positive direction
+Methods
++ accessors & mutators
++ double getTrainStopTime(): returns the stop time of each train at this station, depending on inflow & outflow
+- int getInflow(): returns the inflow at this station
+- int getOutflow(): returns the outflow at this station
+
+
+# Terminus (extends Station)
+Fields
+Methods
+- int getOutflow(): returns -1 to signify that all passengers get off at this terminus
+
+
+# Depot (extends Station)
+Fields
+- int storage: number of trains stored at this depot DONE
+- final int capacity: maximum number of trains that can be stored at this depot DONE
+Methods
++ accessors & mutators DONE
++ void sendTrain(): updates the storage for a train departure DONE
++ void receiveTrain(): updates the storage for a train arrival DONE
+
+
+# Route
+Fields
+- ArrayList<Train> trains: list of trains on this route
+- Station[] stations: list of stations on this route
+Methods
++ accessors & mutators
++ Station getNextStation(Train train): returns the next station on the route
++ Station getPreviousStation(Train train): returns the last station on the route
+- get - distanceTraveled, time, ETA, schedule, distanceToStation
++ ArrayList<Station> getStationsArrayList(): returns a copy of stations
+
+
+# Passenger
+Fields
+- Station stationBoarded: the station where this passenger boarded DONE
+- Station stationAlighted: the station where this passenger alighted DONE
+- Train train: the train this passenger is on DONE
+- String name: this passenger's name DONE
+- int id: this passenger's id DONE
+Methods
++ accessors & mutators DONE
++ double getDistanceTravelled: returns the distance this passenger has travelled so far DONE
++ constructor DONE
+
+
+# Control
+Fields
+- Route[] routes: list of routes in this metro system
+Methods
++ void main(String[] args)
+
+
+# Simulation
+- class for train system simulation
+
+
+# ReRouteInterface
+- animated representation of trains and the ATC model
+- accelerated time for longer period shown
+- using JFrame and Swing
+- sprites of train (scaled down but same dimensions) & passenger (same ratio)
